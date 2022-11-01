@@ -39,13 +39,13 @@
             <label for="title">Title</label>
           </div>
           <div class="margin-bot-25">
-            <input id="title" type="text" name="title">
+            <input id="title" type="text" name="title" required>
           </div>
           <div class="margin-bot-10">
             <label for="photo-url">Photo URL</label>
           </div>
           <div class="margin-bot-25">
-            <input id="photo-url" type="text" name="photo-url">
+            <input id="photo-url" type="text" name="photo-url" required>
           </div>
         </form>
       </div>
@@ -55,10 +55,10 @@
             <label for="notes">Notes</label>
           </div>
           <div>
-            <textarea id="notes" name="notes" form="code-journal" rows="9"></textarea>
+            <textarea id="notes" name="notes" form="code-journal" rows="9" required></textarea>
           </div>
           <div class="align-right">
-            <button>Save</button>
+            <button form="code-journal">Save</button>
           </div>
         </div>
       </div>
