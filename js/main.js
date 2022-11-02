@@ -10,6 +10,7 @@ function newPhoto(event) {
 
 var $codeJournal = document.querySelector('#code-journal');
 var defImage = 'images/placeholder-image-square.jpg';
+var $entriesRow = document.querySelector('.entries-row');
 
 $codeJournal.addEventListener('submit', logValues);
 
@@ -25,6 +26,10 @@ function logValues(event) {
   data.entries.unshift(valueObject);
   $img.setAttribute('src', defImage);
   $codeJournal.reset();
+  var newEntry = renderEntry(valueObject);
+  $entriesRow.prepend(newEntry);
+  $entries.className = 'view container hidden';
+  $domContainer.className = 'view container';
 }
 
 function renderEntry(valueObject) {
