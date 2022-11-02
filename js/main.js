@@ -28,7 +28,7 @@ function logValues(event) {
   $codeJournal.reset();
   var newEntry = renderEntry(valueObject);
   $entriesRow.prepend(newEntry);
-  $entries.className = 'view container hidden';
+  $entryForm.className = 'view container hidden';
   $domContainer.className = 'view container';
 }
 
@@ -64,6 +64,13 @@ document.addEventListener('DOMContentLoaded', function (e) {
     var returnValue = renderEntry(data.entries[i]);
     $domContainer.appendChild(returnValue);
   }
+  if (data.view === 'entry-form') {
+    $entryForm.className = 'view container';
+    $domContainer.className = 'view container hidden';
+  } else if (data.view === 'entries') {
+    $entryForm.className = 'view container hidden';
+    $domContainer.className = 'view container';
+  }
 });
 
 var $tabContainer = document.querySelector('.header');
@@ -76,8 +83,10 @@ function clickTab(event) {
     for (var i = 0; i < $tabs.length; i++) {
       if ($tabs[i] === event.target) {
         $tabs[i].className = 'tab active';
+        data.view = 'entries';
       } else {
         $tabs[i].className = 'tab';
+        data.view = 'entry-form';
       }
     }
   }
@@ -96,10 +105,11 @@ function clickTab(event) {
 }
 
 var $newA = document.querySelector('.new');
-var $entries = document.querySelector('#entries');
+var $entryForm = document.querySelector('#entry-form');
 $newA.addEventListener('click', toEntryForm);
 
 function toEntryForm(event) {
-  $entries.className = 'view container';
+  $entryForm.className = 'view container';
   $domContainer.className = 'view container hidden';
+  data.view = 'entry-form';
 }
