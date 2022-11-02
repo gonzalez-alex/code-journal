@@ -52,6 +52,11 @@ li > h3 {
   margin-bottom: 0;
 }
 
+div.row > div.tab {
+  padding: 10px 20px;
+  font-size: 0.8rem;
+}
+
 .align-right {
   text-align: right;
 }
@@ -68,25 +73,11 @@ li > h3 {
   display: none;
 }
 
-div.tab {
-  padding: 0 15px;
-  font-size: 0.8rem;
-}
-
-div.row > div.tab {
-  padding-left: 20px;
-}
-
 .align-center {
   align-items: center;
 }
 
-.empty-entries {
-  text-align: center;
-  width: 100%;
-}
-
-.new-btn {
+.new-a {
   padding: 0 8px;
   margin: 23px 0;
   background-color: #562b81;
