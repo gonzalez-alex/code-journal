@@ -18,13 +18,14 @@
 <body>
   <header>
     <div class="container">
-      <div class="column-full">
-        <p>Code Journal</p>
+      <div class="column-full row align-center header">
+        <p class="tab" data-view="entry-form">Code Journal</p>
+        <div class="tab active" data-view="entries">Entries</div>
       </div>
     </div>
   </header>
   <main>
-    <div data-view="entry-form" class="container hidden">
+    <div data-view="entry-form" class="view container hidden" id="entries">
       <div class="row">
         <div class="column-full">
           <h2>New Entry</h2>
@@ -58,16 +59,16 @@
             <textarea id="notes" name="notes" form="code-journal" rows="9" required></textarea>
           </div>
           <div class="align-right">
-            <button form="code-journal">Save</button>
+            <button form="code-journal" class="save-btn">Save</button>
           </div>
         </div>
       </div>
     </div>
-    <div data-view="entries" class="container dom">
+    <div data-view="entries" class="view container" id="dom">
       <div class="row">
-        <div class="column-half">
+        <div class="column-full test2">
           <h2>Entries</h2>
-          <button>NEW</button>
+          <a class="new new-btn">NEW</a>
         </div>
       </div>
     </div>

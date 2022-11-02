@@ -11,6 +11,7 @@ header {
 p {
   padding: 10px 0;
   margin: 0;
+  font-size: 1.1rem;
 }
 
 input {
@@ -65,4 +66,39 @@ li > h3 {
 
 .hidden {
   display: none;
+}
+
+div.tab {
+  padding: 0 15px;
+  font-size: 0.8rem;
+}
+
+div.row > div.tab {
+  padding-left: 20px;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.empty-entries {
+  text-align: center;
+  width: 100%;
+}
+
+.new-btn {
+  padding: 0 8px;
+  margin: 23px 0;
+  background-color: #562b81;
+  color: white;
+  cursor: pointer;
+}
+
+.tab {
+  cursor: pointer;
+}
+
+.test2 {
+  justify-content: space-between;
+  display: flex;
 }

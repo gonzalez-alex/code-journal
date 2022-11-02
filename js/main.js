@@ -52,7 +52,7 @@ function renderEntry(valueObject) {
   return createDivRow;
 }
 
-var $domContainer = document.querySelector('.dom');
+var $domContainer = document.querySelector('#dom');
 
 document.addEventListener('DOMContentLoaded', function (e) {
   for (var i = 0; i < data.entries.length; i++) {
@@ -60,3 +60,41 @@ document.addEventListener('DOMContentLoaded', function (e) {
     $domContainer.appendChild(returnValue);
   }
 });
+
+var $tabContainer = document.querySelector('.header');
+var $tabs = document.querySelectorAll('.tab');
+
+$tabContainer.addEventListener('click', clickTab);
+
+function clickTab(event) {
+  if (event.target.matches('.tab')) {
+    for (var i = 0; i < $tabs.length; i++) {
+      if ($tabs[i] === event.target) {
+        $tabs[i].className = 'tab active';
+      } else {
+        $tabs[i].className = 'tab';
+      }
+    }
+  }
+
+  var dataView = event.target.getAttribute('data-view');
+  var $viewDiv = document.querySelectorAll('.view');
+
+  for (var j = 0; j < $viewDiv.length; j++) {
+    if ($viewDiv[j].getAttribute('data-view') === dataView) {
+      $viewDiv[j].className = 'view container';
+    } else {
+      $viewDiv[j].className = 'view container hidden';
+    }
+  }
+
+}
+
+var $newA = document.querySelector('.new');
+var $entries = document.querySelector('#entries');
+$newA.addEventListener('click', toEntryForm);
+
+function toEntryForm(event) {
+  $entries.className = 'view container';
+  $domContainer.className = 'view container hidden';
+}
