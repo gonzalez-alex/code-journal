@@ -107,6 +107,8 @@ function switchView(event) {
 }
 
 $domContainer.addEventListener('click', fillEdit);
+var $editForm = document.querySelector('#edit-form');
+var $editImg = document.querySelector('.edit-img');
 
 function fillEdit(event) {
   var targetID = event.target.getAttribute('data-entry-id');
@@ -116,4 +118,8 @@ function fillEdit(event) {
       data.editing = data.entries[i];
     }
   }
+  $editForm.elements.edit_title.value = data.editing.title;
+  $editForm.elements.edit_photo_url.value = data.editing.photo_url;
+  $editImg.setAttribute('src', data.editing.photo_url);
+  $editForm.elements.edit_notes.value = data.editing.notes;
 }

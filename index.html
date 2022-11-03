@@ -81,20 +81,20 @@
       </div>
       <div class="row">
         <div class="column-half">
-          <img src="images/placeholder-image-square.jpg">
+          <img class="edit-img" src="images/placeholder-image-square.jpg">
         </div>
         <form id="edit-form" class="column-half">
           <div class="margin-bot-10">
             <label for="edit-title">Title</label>
           </div>
           <div class="margin-bot-25">
-            <input id="edit-title" type="text" name="title" required>
+            <input id="edit-title" type="text" name="edit_title" required>
           </div>
           <div class="margin-bot-10">
             <label for="edit-photo-url">Photo URL</label>
           </div>
           <div class="margin-bot-25">
-            <input id="edit-photo-url" type="text" name="photo_url" required>
+            <input id="edit-photo-url" type="text" name="edit_photo_url" required>
           </div>
         </form>
       </div>
@@ -104,7 +104,7 @@
             <label for="edit-notes">Notes</label>
           </div>
           <div>
-            <textarea id="edit-notes" name="notes" form="code-journal" rows="9" required></textarea>
+            <textarea id="edit-notes" name="edit_notes" form="edit-form" rows="9" required></textarea>
           </div>
           <div class="align-right">
             <button form="edit-form" class="save-btn">SAVE</button>
