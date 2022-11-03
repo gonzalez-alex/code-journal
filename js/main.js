@@ -35,7 +35,6 @@ function logValues(event) {
 function renderEntry(valueObject) {
   var createDivRow = document.createElement('div');
   createDivRow.setAttribute('class', 'row');
-  createDivRow.setAttribute('data-entry-id', valueObject.entryId);
   var createDivHalf = document.createElement('div');
   createDivHalf.setAttribute('class', 'column-half');
   createDivRow.appendChild(createDivHalf);
@@ -55,6 +54,7 @@ function renderEntry(valueObject) {
   var createPen = document.createElement('i');
   createPen.setAttribute('class', 'fa-solid fa-pen');
   createPen.setAttribute('data-view', 'edit-entry');
+  createPen.setAttribute('data-entry-id', valueObject.entryId);
   createH3.appendChild(createPen);
   var createP = document.createElement('p');
   createP.textContent = valueObject.notes;
@@ -104,4 +104,16 @@ function switchView(event) {
     }
   }
   data.view = dataView;
+}
+
+$domContainer.addEventListener('click', fillEdit);
+
+function fillEdit(event) {
+  var targetID = event.target.getAttribute('data-entry-id');
+  targetID = Number(targetID);
+  for (var i = 0; i < data.entries.length; i++) {
+    if (targetID === data.entries[i].entryId) {
+      data.editing = data.entries[i];
+    }
+  }
 }
