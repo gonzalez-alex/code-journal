@@ -58,6 +58,7 @@ function renderEntry(valueObject) {
 }
 
 var $domContainer = document.querySelector('#dom');
+var $entryForm = document.querySelector('#entry-form');
 
 document.addEventListener('DOMContentLoaded', function (e) {
   for (var i = 0; i < data.entries.length; i++) {
@@ -74,23 +75,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
 });
 
 var $tabContainer = document.querySelector('.header');
-var $tabs = document.querySelectorAll('.tab');
+var $newA = document.querySelector('.new');
 
-$tabContainer.addEventListener('click', clickTab);
+$tabContainer.addEventListener('click', switchView);
+$newA.addEventListener('click', switchView);
 
-function clickTab(event) {
-  if (event.target.matches('.tab')) {
-    for (var i = 0; i < $tabs.length; i++) {
-      if ($tabs[i] === event.target) {
-        $tabs[i].className = 'tab active';
-        data.view = 'entries';
-      } else {
-        $tabs[i].className = 'tab';
-        data.view = 'entry-form';
-      }
-    }
-  }
-
+function switchView(event) {
   var dataView = event.target.getAttribute('data-view');
   var $viewDiv = document.querySelectorAll('.view');
 
@@ -101,15 +91,5 @@ function clickTab(event) {
       $viewDiv[j].className = 'view container hidden';
     }
   }
-
-}
-
-var $newA = document.querySelector('.new');
-var $entryForm = document.querySelector('#entry-form');
-$newA.addEventListener('click', toEntryForm);
-
-function toEntryForm(event) {
-  $entryForm.className = 'view container';
-  $domContainer.className = 'view container hidden';
-  data.view = 'entry-form';
+  data.view = dataView;
 }
