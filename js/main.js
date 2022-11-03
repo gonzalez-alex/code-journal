@@ -10,6 +10,7 @@ function newPhoto(event) {
 
 var $codeJournal = document.querySelector('#code-journal');
 var defImage = 'images/placeholder-image-square.jpg';
+var $entriesRow = document.querySelector('.entries-row');
 
 $codeJournal.addEventListener('submit', logValues);
 
@@ -25,4 +26,70 @@ function logValues(event) {
   data.entries.unshift(valueObject);
   $img.setAttribute('src', defImage);
   $codeJournal.reset();
+  var newEntry = renderEntry(valueObject);
+  $entriesRow.prepend(newEntry);
+  $entryForm.className = 'view container hidden';
+  $domContainer.className = 'view container';
+}
+
+function renderEntry(valueObject) {
+  var createDivRow = document.createElement('div');
+  createDivRow.setAttribute('class', 'row');
+  var createDivHalf = document.createElement('div');
+  createDivHalf.setAttribute('class', 'column-half');
+  createDivRow.appendChild(createDivHalf);
+  var createImg = document.createElement('img');
+  createImg.setAttribute('src', valueObject.photo_url);
+  createDivHalf.appendChild(createImg);
+  var newDivHalf = document.createElement('div');
+  newDivHalf.setAttribute('class', 'column-half');
+  createDivRow.appendChild(newDivHalf);
+  var createUL = document.createElement('ul');
+  newDivHalf.appendChild(createUL);
+  var createLi = document.createElement('li');
+  createUL.appendChild(createLi);
+  var createH3 = document.createElement('h3');
+  createH3.textContent = valueObject.title;
+  createLi.appendChild(createH3);
+  var createP = document.createElement('p');
+  createP.textContent = valueObject.notes;
+  createLi.appendChild(createP);
+  return createDivRow;
+}
+
+var $domContainer = document.querySelector('#dom');
+var $entryForm = document.querySelector('#entry-form');
+
+document.addEventListener('DOMContentLoaded', function (e) {
+  for (var i = 0; i < data.entries.length; i++) {
+    var returnValue = renderEntry(data.entries[i]);
+    $domContainer.appendChild(returnValue);
+  }
+  if (data.view === 'entry-form') {
+    $entryForm.className = 'view container';
+    $domContainer.className = 'view container hidden';
+  } else if (data.view === 'entries') {
+    $entryForm.className = 'view container hidden';
+    $domContainer.className = 'view container';
+  }
+});
+
+var $tabContainer = document.querySelector('.header');
+var $newA = document.querySelector('.new');
+
+$tabContainer.addEventListener('click', switchView);
+$newA.addEventListener('click', switchView);
+
+function switchView(event) {
+  var dataView = event.target.getAttribute('data-view');
+  var $viewDiv = document.querySelectorAll('.view');
+
+  for (var j = 0; j < $viewDiv.length; j++) {
+    if ($viewDiv[j].getAttribute('data-view') === dataView) {
+      $viewDiv[j].className = 'view container';
+    } else {
+      $viewDiv[j].className = 'view container hidden';
+    }
+  }
+  data.view = dataView;
 }

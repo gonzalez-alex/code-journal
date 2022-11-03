@@ -18,20 +18,21 @@
 <body>
   <header>
     <div class="container">
-      <div class="column-full">
-        <p>Code Journal</p>
+      <div class="column-full row align-center header">
+        <p class="tab" data-view="entry-form">Code Journal</p>
+        <div class="tab active" data-view="entries">Entries</div>
       </div>
     </div>
   </header>
   <main>
-    <div class="container">
+    <div data-view="entry-form" class="view container hidden" id="entry-form">
       <div class="row">
         <div class="column-full">
-          <h2>New Entry</h2>
+          <h1>New Entry</h1>
         </div>
       </div>
       <div class="row">
-        <div data-view="entry-form" class="column-half">
+        <div class="column-half">
           <img src="images/placeholder-image-square.jpg">
         </div>
         <form id="code-journal" class="column-half">
@@ -58,10 +59,19 @@
             <textarea id="notes" name="notes" form="code-journal" rows="9" required></textarea>
           </div>
           <div class="align-right">
-            <button form="code-journal">Save</button>
+            <button form="code-journal" class="save-btn">SAVE</button>
           </div>
         </div>
       </div>
+    </div>
+    <div data-view="entries" class="view container" id="dom">
+      <div class="row">
+        <div class="column-full flex-justify-between">
+          <h1>Entries</h1>
+          <a data-view="entry-form" class="new new-a">NEW</a>
+        </div>
+      </div>
+      <div class="entries-row"></div>
     </div>
   </main>
   <script src="js/data.js"></script>
