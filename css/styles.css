@@ -96,3 +96,13 @@ div.row > div.tab {
   display: flex;
   align-items: center;
 }
+
+.pen {
+  position: relative;
+}
+
+.fa-pen {
+  position: absolute;
+  right: 5px;
+  cursor: pointer;
+}
